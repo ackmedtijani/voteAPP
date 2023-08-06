@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+
+   <link rel = "stylesheet" href = "{% static 'css/vote-detail/vote-detail.css' %}">
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<section class="section-form">
+    <div class="alert-box">
+
+        <div class = "warning-alert">
+            <p class="unanswered-questions"> You haven't answered any questions yet. </p>
+            <p class="voted-already"> You have voted already </p>
+        </div>
+
+        <div class = "success-alert">
+            <p> Thanks for Voting <p> 
+        </div>
+        
+    </div>
+
+    <form>
+        <section class = "form-section">
+        {% csrf_token %}
+        {% for values in ques %}
+        {% for i , q in values.items %}
+
+        <div class="questions"  id="{{i.id}} ">
+            
+            <h2> {{ i.questions }} </h2>
+                <div class="answer-group">
+                {% for ans in q %}
+
+                    <div class="each_answer"> 
+                        {% if i.multiple_answer == False %}
+                        <label>
+                         <input type="radio" value = "{{ans.answers}}"
+                            name = "{{i.id}}" >
+                            {{ ans.answers }}
+                        </label>
+                        {% else %}
+                        <input type="checkbox" value = "{{ans.answers}}"
+                        name = "{{ i.id}}" >
+                        <label>
+
+                                      {{ ans.answers }}
+
+                        </label>
+                        {% endif %}
+                           
+                        
+                    </div>
+                {% endfor %}
+                </div>
+                    
+        </div> 
+        {% endfor %}
+        {% endfor %}
+
+        <div class="btn-class"> 
+
+        <p> <a class = "btn btn-submit"> 
+            Submit 
+        </a>
+        
+        </p>
+        <p class="btn-navigation"> <a class="btn btn-previous"> 
+            Previous 
+            </a> 
+            <a class="btn btn-next"> 
+                Next 
+            </a> 
+        </p>
+   
+
+    </div>
+        </section>
+    
+
+    </form>
+    <script src="{% static 'js/vote-detail.js' %}">
+
+    </script>
+</section>
+
+        
+{% endblock %}

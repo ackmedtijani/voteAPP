@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <section class="body"> 
+        {{ user.name }}
+        {% for poll in polls %}
+            <p> {{ poll.name }} </p>
+
+        {% endfor %}
+    </section>
+
+{% endblock %}

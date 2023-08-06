@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel = "stylesheet" href = "{% static 'css/update_poll.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+
+<section class="body">
+
+    <section class="sidebar">
+        
+        <p> <a href=""> Questions </a> </p>
+        <p> <a href="">  Answers </a> </p>
+
+        
+    </section> 
+
+    <section class="form-section">
+        <div> 
+            <p> <a class="btn btn-add-questions"> Add Questions </a>
+                <a class="btn btn-add-poll"> Add Poll </a>  </p>
+            {% for i in result %}
+            {% for keys , values in i.items %}
+              <p> {{ keys }} </p>
+            {% endfor %}
+            {% endfor %}
+        </div>
+
+        <form action="" method="post">
+
+            {% csrf_token %}
+            {{ form.media}}
+            {{ form.as_p }}
+            <button class="btn btn-info ml-" type="submit"> Update</button>
+
+        </form>
+    </section>
+
+</section>
+
+{% endblock content %}

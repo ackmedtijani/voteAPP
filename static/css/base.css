@@ -1,0 +1,42 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin : 0;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+nav{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: 1px solid gainsboro;
+    padding: 10px;
+    background-color: white;
+    width: 100%;
+}
+
+nav img{
+    width: 15%;
+    height: 50%;
+    
+}
+
+div a{
+    margin: 0 0.5rem;
+    text-decoration: none;
+}
+
+.nav-btn{
+    padding: 0.5rem;
+    text-decoration: none;
+    width: 100%;
+}
+
+.nav-btn:hover{
+    border: 3px solid rgb(58, 52, 224);
+    border-radius: 25px;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+

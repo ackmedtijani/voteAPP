@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel = "stylesheet" href = "{% static 'css/home.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+<section class="body">
+
+    <section class="feature">
+
+        <h1> Come and give your opinion </h1>
+
+        <p> At Opinify, we give the platform for stakeholders, industrialists, techocrats etc to give seek opinions and
+            and the general society to give their opinions <p>
+        
+        <p> <a class = "btn btn-createpoll" href="{% url 'create_poll' %}"> Create a Poll </a>
+            <a class = "btn btn-takepoll" href="#polls"> Take a poll </a> <p>
+                
+    
+    </section>
+
+    <section id="polls" class = "polls-section new_polls">
+        <h1> Explore newly created Polls </h1>
+        <div class="polls-container">
+        {% for i in new_polls  %}
+            <div class = "polls-card" id="polls-{{new_polls.id}}">
+                <h3> <a href="{% url 'vote-detail' i.id %}"> {{ i.name }}  </a> </h3>
+                <p> Poll closes at {{ i.deadline }} </p>
+            </div>
+        {% endfor %}
+            
+        </div>
+    </section>
+
+
+    <section class = "polls-section popular_polls">
+        <h1> Trending Polls </h1>
+        <div class="polls-container">
+        {% for i in popular_polls %}
+                <p> {{ i.name }} <p>
+        {% endfor %}
+        </div>
+
+    </section>
+</section>
+{% endblock %}

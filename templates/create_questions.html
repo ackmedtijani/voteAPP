@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <section class="body">
+
+        <section class="form-section">
+    
+            <form method="post">
+                <div class="card-body">
+                    {{ form.non_form_errors }}
+                    {{ form.as_p }}
+                    <h5 class="text-info">Answers </h5>
+                    {{ formset.non_form_errors }}
+                    {{ formset.management_form }}
+                    {% for form in formset %}
+                    <div class="d-flex py-1 inline {{formset.prefix }}">
+                       {{ form.as_p }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </form>
+        </section>
+
+    </section>
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+    <link rel = "stylesheet" href = "{% static 'css/create_poll.css' %}" />
+{% endblock %}
+
+{% block content %}
+
+
+<section class="body">
+
+    <section class="form-section">
+
+        <form action="" method="post">
+
+            {% csrf_token %}
+            {{ form.media}}
+            {{ form.as_p }}
+            <button class="btn btn-info ml-" type="submit"> Update</button>
+
+        </form>
+    </section>
+
+</section>
+
+{% endblock content %}

@@ -1,0 +1,68 @@
+a{
+    text-decoration: none;
+}
+
+.feature{
+    display: flex;
+    flex-direction: column;
+    height: 70vh;
+    text-align: center;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0 2rem;
+    background-color: rgb(65, 91, 219);
+    color : white;
+}
+
+.feature h1{
+    font-size: 3rem;
+}
+
+.btn{
+    color : white;
+    margin-left: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 1px solid white;
+    text-decoration: none;
+}
+
+.polls-section{
+    margin: 2rem 1rem 0 1rem;
+}
+
+.polls-section h1{
+    font-size: 1.5rem;
+    margin: 1rem 0;
+}
+
+
+.polls-container{
+    display: grid;
+    grid-template-columns: repeat(2 , 1fr);
+    gap: 2%;
+
+}
+
+.polls-card{
+    text-align: center;
+    padding-top: 2rem;
+    border: 1px solid white;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.polls-card > *{
+    margin: 1rem 0;
+}
+
+.polls-card:hover{
+    opacity: 0.5;
+}
+
+
+@media only screen and (min-width: 900px) {
+            
+    
+}

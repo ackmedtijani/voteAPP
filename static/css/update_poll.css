@@ -1,0 +1,41 @@
+.body{
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.sidebar{
+    height: 100vh;
+    text-align: center;
+    border-right: 1px solid gainsboro;
+    padding: 0 1rem;
+}
+
+.form-section{
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem 1.5rem;
+    width: 100%;
+}
+
+form > p{
+    margin: 1rem 0;
+    padding: 1rem 0;
+    width: 80vw;
+    border-bottom: 1px solid gainsboro;
+}
+
+input , select{
+    width: 80%;
+    padding: 0.5rem 0;
+}
+
+.form-section > div{
+    float:right;
+}
+
+.btn{
+    padding: 1rem 0.5rem;
+    border: 1px solid rgb(61, 87, 192);
+}
