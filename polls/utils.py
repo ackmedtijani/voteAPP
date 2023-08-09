@@ -1,23 +1,11 @@
 from datetime import datetime
+
+from django.core.mail import EmailMessage
+
 from .models import Answers
 
 def convert_to_days(date):
     seconds = datetime.timestamp(date)
-    
-
-def get_report_per_poll(poll):
-    questions = [get_make_reports(questions) for questions in poll.questions_set.all()]
-    return {'title' : [poll.title] , 
-            'days_opened' : [poll.deadline - poll.created],
-            'questions' : [questions.title for questions in poll.questions_set.all()],
-            'questions_statistics' : questions
-        }        
-
-
-def get_make_reports(questions):
-    answers = questions.answers_set.all()
-    return {ans.name :ans.number_chosen for ans in answers}
-    #get percentage of each questions. 
     
 def convert_to_answer(lists):
     answers = []
@@ -26,5 +14,15 @@ def convert_to_answer(lists):
             answers.append(Answers.objects.get(answers=dat , questions__id = int(x)))
     return answers
     
+
+def send_mail(subject, body, to_email ,  host=None, attach_file = None):
+    from_email = host if host else "settings.EMAIL_FROM"
     
+    msg = EmailMessage(subject, body , from_email , [to_email])
+    
+    if attach_file:
+        msg.content_subtype = "html"  
+        msg.attach_file('pdfs/Instructions.pdf')
+        
+    msg.send()
 

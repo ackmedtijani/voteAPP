@@ -13,6 +13,10 @@ nav{
     padding: 10px;
     background-color: white;
     width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
 }
 
 nav img{
@@ -38,5 +42,7 @@ div a{
     opacity: 0.5;
     cursor: pointer;
 }
+
+
 
 

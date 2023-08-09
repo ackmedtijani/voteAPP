@@ -2,7 +2,9 @@
 {% load static %}
 
 {% block extra_head %}
-    <link rel = "stylesheet" href = "{% static 'css/update_poll.css' %}" />
+
+    <link rel = "stylesheet" href = "{% static 'css/pages.css' %}"></link>
+
 {% endblock %}
 
 {% block content %}
@@ -10,24 +12,9 @@
 
 <section class="body">
 
-    <section class="sidebar">
-        
-        <p> <a href=""> Questions </a> </p>
-        <p> <a href="">  Answers </a> </p>
-
-        
-    </section> 
+    {% include 'sidebar.html' %}
 
     <section class="form-section">
-        <div> 
-            <p> <a class="btn btn-add-questions"> Add Questions </a>
-                <a class="btn btn-add-poll"> Add Poll </a>  </p>
-            {% for i in result %}
-            {% for keys , values in i.items %}
-              <p> {{ keys }} </p>
-            {% endfor %}
-            {% endfor %}
-        </div>
 
         <form action="" method="post">
 
@@ -40,5 +27,28 @@
     </section>
 
 </section>
+
+<script>
+
+var generate_btn = document.querySelector(".generate-poll");
+console.log(generate_btn);
+var url = window.location.href + '/generate_report';
+var url = url.replace("/update_polls" , "");
+console.log(url);
+
+generate_btn.addEventListener('click' , generateReport);
+
+function generateReport() {
+   
+    // Storing response
+    const response = fetch(url , {Method : 'GET'});
+   
+    // Storing data in form of JSON
+    var data = response.json ;
+    console.log(data);
+
+}
+
+</script>
 
 {% endblock content %}

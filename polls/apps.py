@@ -6,7 +6,6 @@ class PollsConfig(AppConfig):
     name = 'polls'
     
     def ready(self) -> None:
-        from .signals import create_metadata
         return super().ready()
     
     

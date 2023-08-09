@@ -1,13 +1,13 @@
 import json
 
-from django.shortcuts import render , redirect 
+from django.shortcuts import render , redirect , get_object_or_404
 from django.urls import reverse
 from django.db import transaction
-from django.http import HttpResponse
+from django.http import HttpResponse , JsonResponse
 from django.db.models import F
 from django.core.cache import cache
 from django.contrib.auth.decorators import login_required
-from django.views.decorators.cache import cache_page
+from django.views.decorators.http import require_GET
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
@@ -82,8 +82,7 @@ def vote_detail(request , *args , **kwargs):
         with transaction.atomic():
             answers = convert_to_answer(data)
             
-            res = map(lambda x: Respondents(respondent = request.user , poll=poll , answers = x) , answers)
-            Respondents.objects.bulk_create(list(res))
+            res = Respondents.objects.create(respondent = request.user , poll=poll , answers = answers)
 
     
         objects[1].number_of_submits +=1 
@@ -213,3 +212,19 @@ class EditQuestionsView(generic.UpdateView):
                                   formset=product_meta_formset
                                   )
         )
+
+@require_GET
+@login_required
+def generate_report_view(request , **kwargs):
+    "Generate Report function"
+    
+    id = kwargs.get('pk' , None)
+    if id:
+        print(id)
+        poll  = get_object_or_404(Poll , pk = id)
+        generate_report(poll)
+        
+        return JsonResponse({"success" : True , "message" : "Email Sent"})
+    else:
+        return JsonResponse({"success:" : False , "message" : "Poll_id needs to be provided"})
+    

@@ -38,4 +38,11 @@ input , select{
 .btn{
     padding: 1rem 0.5rem;
     border: 1px solid rgb(61, 87, 192);
+    cursor: pointer;
+}
+
+
+.btn-container{
+    margin-bottom: 2rem;
+    background-color: blue;
 }

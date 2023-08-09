@@ -1,8 +1,17 @@
 {% extends 'base.html' %}
+{% load static %}
+
+{% block extra_head %}
+
+    <link rel = "stylesheet" href = "{% static 'css/pages.css'  %}"></link>
+
+{% endblock %}
 
 {% block content %}
 
     <section class="body">
+
+        {% include 'sidebar.html' %}
 
         <section class="form-section">
     
